@@ -75,19 +75,19 @@ private:
 	List* find(int index);
 public:
 	//TODO ALL FUNCTIONS
-	Menu() {
+	plane_Menu() {
 		begin = NULL;
 		end = NULL;
 		size = 0;
 	}
-	Menu(Plane pl) {
+	plane_Menu(Plane pl) {
 		List* tmp = new List(pl);
 		end = tmp;
 		begin = tmp;
 		size = 1;
 	}
 
-	Menu(List* h) : end(h) {
+	plane_Menu(List* h) : end(h) {
 		List* tmp = new List();
 		tmp->info = h->info;
 		end = tmp;

@@ -12,7 +12,7 @@ private:
 	int startY;
 	int endX;
 	int endY;
-	tm link_to_plane; //Name of var can be improved
+	tm linkTime; //The time when directiom was linked to its plane
 	Plane* plane;
 	
 public:
@@ -83,19 +83,19 @@ private:
 	List* find(int index);
 public:
 	//TODO ALL FUNCTIONS
-	Menu() {
+	direction_Menu() {
 		begin = NULL;
 		end = NULL;
 		size = 0;
 	}
-	Menu(Direction dirc) {
+	direction_Menu(Direction dirc) {
 		List* tmp = new List(dirc);
 		end = tmp;
 		begin = tmp;
 		size = 1;
 	}
 
-	Menu(List* h) : end(h) {
+	direction_Menu(List* h) : end(h) {
 		List* tmp = new List();
 		tmp->info = h->info;
 		end = tmp;
@@ -140,7 +140,7 @@ public:
 	void printCurrentPosition();//Prototype have not wrote correctly yet
 
 	void printRemainingTime();//Prototype have not wrote correctly yet
-	
+
 	~Menu() {
 		freeList();
 	}
