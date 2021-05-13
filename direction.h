@@ -12,6 +12,7 @@ private:
 	int startY;
 	int endX;
 	int endY;
+	tm link_to_plane; //Name of var can be improved
 	Plane* plane;
 	
 public:
@@ -71,5 +72,76 @@ public:
 
 	~Direction() {
 
+	}
+};
+
+class direction_Menu {
+private:
+	List* begin;
+	List* end;
+	size_t size;
+	List* find(int index);
+public:
+	//TODO ALL FUNCTIONS
+	Menu() {
+		begin = NULL;
+		end = NULL;
+		size = 0;
+	}
+	Menu(Direction dirc) {
+		List* tmp = new List(dirc);
+		end = tmp;
+		begin = tmp;
+		size = 1;
+	}
+
+	Menu(List* h) : end(h) {
+		List* tmp = new List();
+		tmp->info = h->info;
+		end = tmp;
+		begin = tmp;
+		size = 1;
+	}
+	Direction& operator[](int i) {
+		if (i > size) {
+			std::cout << "Index out of bounds" << std::endl;
+			return end->info;
+		}
+
+		List* tmp = begin;
+		int j = 0;
+		while (j < i) {
+			if (tmp->next == NULL) break;
+			tmp = tmp->next;
+			j++;
+		}
+		return tmp->info;
+	}
+	List* findDirectionByName(std::string fname);
+
+	size_t getSize();
+
+	void edit(int index, std::string info, std::string newvalue);
+
+	void pushFront(std::string name int startX int startY int endX int endY;);
+
+	void print();
+
+	void readFile(std::string fileName);
+
+	void printFile(std::string fileName);
+
+	void del(int index);
+
+	void freeList();
+
+	void setPlane();//Prototype have not wrote correctly yet
+
+	void printCurrentPosition();//Prototype have not wrote correctly yet
+
+	void printRemainingTime();//Prototype have not wrote correctly yet
+	
+	~Menu() {
+		freeList();
 	}
 };

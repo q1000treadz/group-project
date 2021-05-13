@@ -66,3 +66,68 @@ public:
 
 	}
 };
+
+class plane_Menu {
+private:
+	List* begin;
+	List* end;
+	size_t size;
+	List* find(int index);
+public:
+	//TODO ALL FUNCTIONS
+	Menu() {
+		begin = NULL;
+		end = NULL;
+		size = 0;
+	}
+	Menu(Plane pl) {
+		List* tmp = new List(pl);
+		end = tmp;
+		begin = tmp;
+		size = 1;
+	}
+
+	Menu(List* h) : end(h) {
+		List* tmp = new List();
+		tmp->info = h->info;
+		end = tmp;
+		begin = tmp;
+		size = 1;
+	}
+	Plane& operator[](int i) {
+		if (i > size) {
+			std::cout << "Index out of bounds" << std::endl;
+			return end->info;
+		}
+
+		List* tmp = begin;
+		int j = 0;
+		while (j < i) {
+			if (tmp->next == NULL) break;
+			tmp = tmp->next;
+			j++;
+		}
+		return tmp->info;
+	}
+	List* findPlaneByName(std::string fname);
+
+	size_t getSize();
+
+	void edit(int index, std::string info, std::string newvalue);
+
+	void pushFront(std::string name, std::string pilotname, std::string info, int maxrange, int speed);
+
+	void print();
+
+	void readFile(std::string fileName);
+
+	void printFile(std::string fileName);
+
+	void del(int index);
+
+	void freeList();
+
+	~Menu() {
+		freeList();
+	}
+};
