@@ -3,51 +3,51 @@
 1) база данных самолЄтов Ч каждый самолЄт имеет название/пилота/характеристики (сами придумаете пол€)
 и пол€ Ђмаксимальна€ дальность полЄтаї, скорость полЄта ;
 */
-#include "list.h"
 #include<string>
-
+#include <vector>
+using namespace std;
 class Plane {
 private:
-	std::string name;
-	std::string pilotname;
-	std::string info;
+	string name;
+	string pilotname;
+	string info;
 	int maxrange;
 	int speed;
 public:
 	Plane() {
 
 	}
-	Plane(std::string name, std::string pilotname, std::string info, int maxrange, int speed) : name(name), pilotname(pilotname), info(info), maxrange(maxrange), speed(speed) {
+	Plane(string name, string pilotname, string info, int maxrange, int speed) : name(name), pilotname(pilotname), info(info), maxrange(maxrange), speed(speed) {
 
 	}
-	friend std::ostream& operator<< (std::ostream& out, const Plane& plane)
+	friend ostream& operator<< (ostream& out, const Plane& plane)
 	{
 		return out;
 	}
 
-	friend std::istream& operator>> (std::istream& is, Plane& plane)
+	friend istream& operator>> (istream& is, Plane& plane)
 	{
 		is >> plane.name >> plane.pilotname >> plane.info >> plane.maxrange>> plane.speed;
 		return is;
 	}
 	
-	void SetName(std::string s) {
+	void SetName(string s) {
 		this->name = s;
 	}
-	std::string GetName() {
+	string GetName() {
 		return this->name;
 	}
-	void SetPilotname(std::string s) {
+	void SetPilotname(string s) {
 		this->pilotname = s;
 	}
-	std::string GetPilotname() {
+	string GetPilotname() {
 		return this->pilotname;
 	}
 
-	void SetInfo(std::string s) {
+	void SetInfo(string s) {
 		this->info = s;
 	}
-	std::string GetInfo() {
+	string GetInfo() {
 		return this->info;
 	}
 	void SetMaxrange(int i) {
@@ -69,59 +69,25 @@ public:
 
 class plane_Menu {
 private:
-	List* begin;
-	List* end;
 	size_t size;
-	List* find(int index);
+	
 public:
 	//TODO ALL FUNCTIONS
 	plane_Menu() {
-		begin = NULL;
-		end = NULL;
-		size = 0;
-	}
-	plane_Menu(Plane pl) {
-		List* tmp = new List(pl);
-		end = tmp;
-		begin = tmp;
-		size = 1;
+
 	}
 
-	plane_Menu(List* h) : end(h) {
-		List* tmp = new List();
-		tmp->info = h->info;
-		end = tmp;
-		begin = tmp;
-		size = 1;
-	}
-	Plane& operator[](int i) {
-		if (i > size) {
-			std::cout << "Index out of bounds" << std::endl;
-			return end->info;
-		}
+	int findPlaneByName(string fname);
 
-		List* tmp = begin;
-		int j = 0;
-		while (j < i) {
-			if (tmp->next == NULL) break;
-			tmp = tmp->next;
-			j++;
-		}
-		return tmp->info;
-	}
-	List* findPlaneByName(std::string fname);
+	void edit(int index, string info, string newvalue);
 
-	size_t getSize();
-
-	void edit(int index, std::string info, std::string newvalue);
-
-	void pushFront(std::string name, std::string pilotname, std::string info, int maxrange, int speed);
+	void pushFront(string name, string pilotname, string info, int maxrange, int speed);
 
 	void print();
 
-	void readFile(std::string fileName);
+	void readFile(string fileName);
 
-	void printFile(std::string fileName);
+	void printFile(string fileName);
 
 	void del(int index);
 
