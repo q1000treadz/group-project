@@ -91,9 +91,6 @@ public:
 
 	void del(int index);
 
-	void freeList();
-
 	~Menu() {
-		freeList();
 	}
 };
