@@ -3,6 +3,7 @@
 1) база данных самолЄтов Ч каждый самолЄт имеет название/пилота/характеристики (сами придумаете пол€)
 и пол€ Ђмаксимальна€ дальность полЄтаї, скорость полЄта ;
 */
+#include<fstream>
 #include<string>
 #include <vector>
 using namespace std;
@@ -22,6 +23,8 @@ public:
 	}
 	friend ostream& operator<< (ostream& out, const Plane& plane)
 	{
+		out<<<<plane.name<<endl<plane.pilotname<<endl<<plane.info<<endl<<plane.maxrange<<endl<<plane.speed;
+		out<<"---------------------------------"<<endl;
 		return out;
 	}
 
@@ -70,11 +73,10 @@ public:
 class plane_Menu {
 private:
 	size_t size;
-	
+	vector<Plane> vec;
 public:
 	//TODO ALL FUNCTIONS
 	plane_Menu() {
-
 	}
 
 	int findPlaneByName(string fname);
