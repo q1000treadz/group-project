@@ -2,9 +2,9 @@
 #include <iostream>
 using namespace std;
 
-int main(int argc, int argv[])
+int main(int argc, string argv[])
 {
-	if (argc < 2) 
+	if (argc < 2)
 	{
 		std::cout << "No arguments\n";
 		return 1;
@@ -22,31 +22,31 @@ int main(int argc, int argv[])
 		case 1:
 		{
 			string fname;
-			cout<<"Enter name of the plane";
-			cin>>fname;
-			cout<<plane_menu.vec[findPlaneByName(fname)]<<endl;
+			cout << "Enter name of the plane";
+			cin >> fname;
+			cout << plane_menu.findPlaneByName(fname) << endl;
 		}
-			break;
+		break;
 		case 2:
-			menu.print();
+			plane_menu.print();
 			break;
 		case 3:
 		{
-			string name,pilotName,info;
-			int maxrange,speed;
-			cout<<"name"<<endl;
-			cin>>name;
-			cout<<"pilotname"<<endl
-			cin>>pilotname;
-			cout<<"info"<<endl
-			cin>>info;
-			cout<<"maxrange"<<endl
-			cin>>maxrange;
-			cout<<"speed"<<endl
-			cin>>speed;
-			plane_menu.pushFront(name,pilotName,info,maxrange,speed;)
+			string name, pilotName, info;
+			int maxrange, speed;
+			cout << "name" << endl;
+			cin >> name;
+			cout << "pilotname" << endl;
+			cin >> pilotName;
+			cout << "info" << endl;
+			cin >> info;
+			cout << "maxrange" << endl;
+			cin >> maxrange;
+			cout << "speed" << endl;
+			cin >> speed;
+			plane_menu.pushFront(name, pilotName, info, maxrange, speed);
 		}
-			break;
+		break;
 		case 4:
 		{
 			int index;
@@ -57,19 +57,20 @@ int main(int argc, int argv[])
 			cin >> editname;
 			printf("Enter value: ");
 			cin >> value;
-			menu.edit(index, editname, value);
+			plane_menu.edit(index, editname, value);
 			//menu.printFile(fileName);
 		}
-			break;
+		break;
 		case 5:
 		{
 			int index;
-			cout<<"Del index:"<<endl;
-			cin>>index;
+			cout << "Del index:" << endl;
+			cin >> index;
 			plane_menu.del(index);
 		}
 		default:
 			break;
 		}
+	}
 	return 0;
 }

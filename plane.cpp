@@ -1,22 +1,28 @@
 	
 #include"plane.h"
+#include <iostream>
+#include <vector>
+#include <string>
 
-int findPlaneByName(string fname)
+Plane plane_Menu::findPlaneByName(string fname)
 {
 	int index=-1;
+	Plane finded;
 	for(int i = 0;i<vec.size();i++)
 	{
-		if(vec[i].GetName == fname)
-			index = i;
+		string check = vec[i].GetName;
+
+		if(check == fname)
+			finded = vec[i];
 	}
 	if(index==-1)
 	{
 		cout<<"Plane have not been found"<<endl;
 	}
-	return index;
+	return finded;
 }
 
-void edit(int index, string info, string newvalue)
+void  plane_Menu::edit(int index, string info, string newvalue)
 {
 	try
 	{
@@ -56,11 +62,11 @@ void edit(int index, string info, string newvalue)
 	}
 }
 
-void pushFront(string name, string pilotname, string info, int maxrange, int speed)
+void  plane_Menu::pushFront(string name, string pilotname, string info, int maxrange, int speed)
 {
-	vec.pushFront(plane(name,pilotname,info,maxrange,speed));
+	vec.push_back(Plane(name,pilotname,info,maxrange,speed));
 }
-void print(vector<plane>& vec)
+void  plane_Menu::print()
 {
 	int i = 0;
 	while (vec.size()<i) {
@@ -70,20 +76,19 @@ void print(vector<plane>& vec)
 	}
 }
 
-void readFile(string fileName)
+void  plane_Menu::readFile(string fileName)
 {
 	ifstream in(fileName);
 	string n,p,i,m,s;
-	index;
 	if (in.is_open())
 	{
-		while (index)
+		while (1)
 		{
-			if (std::getline(in, n) && std::getline(in, r) && std::getline(in, t) && std::getline(in, m)) 
+			if (getline(in, n) && getline(in, p) && getline(in, i) && getline(in, m) && getline(in, s))
 			{
-				stoi(m);
-				stoi(s);
-				vec.pushFront(Plane(n,p,i,m,s));
+				int max_range = stoi(m);
+				int speed = stoi(s);
+				vec.push_back(Plane(n,p,i, max_range, speed));
 			}
 			else 
 			{
@@ -98,7 +103,7 @@ void readFile(string fileName)
 	}
 }
 /*
-void printFile(string fileName)
+void  plane_Menu::printFile(string fileName)
 {
 	std::ofstream out(fileName);
 	if (out.is_open())
@@ -117,7 +122,7 @@ void printFile(string fileName)
 	out.close();
 }
 */
-void del(int index)
+void  plane_Menu::del(int index)
 {
 	vec.erase(vec.begin() + index);
 }

@@ -1,7 +1,7 @@
 #pragma once
 /*
-1) база данных самолётов — каждый самолёт имеет название/пилота/характеристики (сами придумаете поля)
-и поля «максимальная дальность полёта», скорость полёта ;
+1) Р±Р°Р·Р° РґР°РЅРЅС‹С… СЃР°РјРѕР»С‘С‚РѕРІ вЂ” РєР°Р¶РґС‹Р№ СЃР°РјРѕР»С‘С‚ РёРјРµРµС‚ РЅР°Р·РІР°РЅРёРµ/РїРёР»РѕС‚Р°/С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё (СЃР°РјРё РїСЂРёРґСѓРјР°РµС‚Рµ РїРѕР»СЏ)
+Рё РїРѕР»СЏ В«РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР°Р»СЊРЅРѕСЃС‚СЊ РїРѕР»С‘С‚Р°В», СЃРєРѕСЂРѕСЃС‚СЊ РїРѕР»С‘С‚Р° ;
 */
 #include<fstream>
 #include<string>
@@ -9,9 +9,9 @@
 using namespace std;
 class Plane {
 private:
-	string name;
 	string pilotname;
 	string info;
+	string name;
 	int maxrange;
 	int speed;
 public:
@@ -23,7 +23,7 @@ public:
 	}
 	friend ostream& operator<< (ostream& out, const Plane& plane)
 	{
-		out<<<<plane.name<<endl<plane.pilotname<<endl<<plane.info<<endl<<plane.maxrange<<endl<<plane.speed;
+		out<<plane.name<<endl<<plane.pilotname<<endl<<plane.info<<endl<<plane.maxrange<<endl<<plane.speed;
 		out<<"---------------------------------"<<endl;
 		return out;
 	}
@@ -76,10 +76,8 @@ private:
 	vector<Plane> vec;
 public:
 	//TODO ALL FUNCTIONS
-	plane_Menu() {
-	}
 
-	int findPlaneByName(string fname);
+	Plane findPlaneByName(string fname);
 
 	void edit(int index, string info, string newvalue);
 
@@ -92,7 +90,4 @@ public:
 	void printFile(string fileName);
 
 	void del(int index);
-
-	~Menu() {
-	}
 };
