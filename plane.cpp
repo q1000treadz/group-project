@@ -8,13 +8,13 @@ Plane plane_Menu::findPlaneByName(string fname)
 {
 	int index=-1;
 	Plane finded;
-	for(int i = 0;i<vec.size();i++)
-	{
-		string check = vec[i].GetName;
+		for(int i = 0;i<vec.size();i++)
+		{
+			string check = &(vec[i].GetName);
 
-		if(check == fname)
-			finded = vec[i];
-	}
+			if(check == fname)
+				finded = vec[i];
+		}
 	if(index==-1)
 	{
 		cout<<"Plane have not been found"<<endl;
