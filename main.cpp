@@ -2,14 +2,14 @@
 #include <iostream>
 using namespace std;
 
-int main(int argc, string argv[])
+int main(int argc, char **argv)
 {
-	if (argc < 3)
+	if (argc < 2) // Correct it to release, argc<2 -> argc<3
 	{
 		std::cout << "No arguments\n";
 		return 1;
 	}
-	string fileName_plane = argv[1];
+	string fileName_plane = argv[1]; // Correct it to release, argv[1] -> argv[2]
 	//string fileName_direction = argv[2];
 	plane_Menu plane_menu;
 	//direction_Menu direction_menu;
@@ -19,22 +19,23 @@ int main(int argc, string argv[])
 	while (1)
 	{
 l1:
-		printf("1)Work with plane's database\n2)Work with direction's database\n3)exit");
+		printf("1)Work with plane's database\n2)Work with direction's database\n3)exit \n");
 		cin >> choose;
 		switch (choose) 
 		{
 			case 1:
 			{
-				printf("1)findPlaneByName\n2)print\n3)pushFront\n4)edit\n5)del\n");
+				printf("1)findPlaneByName\n2)print\n3)pushFront\n4)edit\n5)del \n");
+				cin >> choose;
 				switch (choose)
 				{
 
 				case 1:
 				{
 					string fname;
-					cout << "Enter name of the plane";
+					cout << "Enter name of the plane"<<endl;
 					cin >> fname;
-					cout << plane_menu.findPlaneByName(fname) << endl;
+					plane_menu.findPlaneByName(fname);
 				}
 				break;
 				case 2:
@@ -63,12 +64,11 @@ l1:
 					string editname;
 					string value;
 					cin >> index;
-					printf("Enter edit line: name, pilotName, info, maxrange, speed: ");
+					printf("Enter edit line: name, pilotname, info, maxrange, speed: ");
 					cin >> editname;
 					printf("Enter value: ");
 					cin >> value;
 					plane_menu.edit(index, editname, value);
-					//plane_menu.printFile(fileName);
 				}
 				break;
 				case 5:
@@ -85,6 +85,8 @@ l1:
 			}
 			/*case 2:
 			{
+				printf();
+				cin>>choose;
 				switch (choose)
 				{
 
@@ -92,7 +94,7 @@ l1:
 			{*/
 			case 3:
 			{
-				plane_menu.printFile;
+				plane_menu.printFile(fileName_plane);
 				//direction_menu.printFile;
 				return 0;
 			}

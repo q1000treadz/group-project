@@ -24,7 +24,6 @@ public:
 	friend ostream& operator<< (ostream& out, const Plane& plane)
 	{
 		out<<plane.name<<endl<<plane.pilotname<<endl<<plane.info<<endl<<plane.maxrange<<endl<<plane.speed;
-		out<<"---------------------------------"<<endl;
 		return out;
 	}
 
@@ -75,9 +74,8 @@ private:
 	size_t size;
 	vector<Plane> vec;
 public:
-	//TODO ALL FUNCTIONS
 
-	Plane findPlaneByName(string fname);
+	void findPlaneByName(string fname);
 
 	void edit(int index, string info, string newvalue);
 

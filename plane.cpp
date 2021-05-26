@@ -4,22 +4,30 @@
 #include <vector>
 #include <string>
 
-Plane plane_Menu::findPlaneByName(string fname)
+void plane_Menu::findPlaneByName(string fname)
 {
-	int index=-1;
+	int flag=0;
 	Plane finded;
 		for(int i = 0;i<vec.size();i++)
 		{
-			string check = &(vec[i].GetName);
+			string check = vec[i].GetName();
 
-			if(check == fname)
+			if (check == fname)
+			{
+				flag = 1;
 				finded = vec[i];
+			}
 		}
-	if(index==-1)
+	if(!flag)
 	{
 		cout<<"Plane have not been found"<<endl;
+		return;
 	}
-	return finded;
+	cout << "Name of plane: " <<finded.GetName()<< endl;
+	cout << "Pilot name of plane: " << finded.GetPilotname()<< endl;
+	cout << "Info of plane: " << finded.GetInfo()<< endl;
+	printf("maxrange of finded plane:  %d\n", finded.GetMaxrange());
+	printf("speed of finded plane:  %d\n", finded.GetSpeed());
 }
 
 void  plane_Menu::edit(int index, string info, string newvalue)
@@ -66,16 +74,6 @@ void  plane_Menu::pushFront(string name, string pilotname, string info, int maxr
 {
 	vec.push_back(Plane(name,pilotname,info,maxrange,speed));
 }
-void  plane_Menu::print()
-{
-	int i = 0;
-	while (vec.size()<i) {
-		cout << "Plane" << i << '\n';
-		cout << vec[i];
-		i++;
-	}
-}
-
 void  plane_Menu::readFile(string fileName)
 {
 	ifstream in(fileName);
@@ -102,26 +100,32 @@ void  plane_Menu::readFile(string fileName)
 		std::cout << "Can't open file " << fileName << '\n';
 	}
 }
-/*
+void plane_Menu::print()
+{
+	for (int i = 0;i < vec.size(); i++)
+	{
+		cout << "Plane: " << i << '\n';
+		cout<<vec[i]<<endl;
+	}
+}
+
 void  plane_Menu::printFile(string fileName)
 {
-	std::ofstream out(fileName);
+	ofstream out(fileName);
 	if (out.is_open())
 	{
-		List* tmp = begin;
-		int i = 1;
-		while (tmp != NULL) {
-			out << tmp->info.GetSender() << '\n' << tmp->info.GetReceiver() << '\n' << tmp->info.GetTitle() << '\n' << tmp->info.GetMessage() << '\n';
-			tmp = tmp->next;
-			i++;
+		for (int i = 0; i < vec.size(); i++)
+		{
+			out << vec[i].GetName() << '\n' << vec[i].GetPilotname() << '\n' << vec[i].GetInfo() << '\n' << vec[i].GetMaxrange() << '\n'<< vec[i].GetSpeed() << '\n';
 		}
 	}
-	else {
-		std::cout << "Can't open file " << fileName << '\n';
+	else 
+	{
+		cout << "Can't open file " << fileName << '\n';
 	}
 	out.close();
 }
-*/
+
 void  plane_Menu::del(int index)
 {
 	vec.erase(vec.begin() + index);
