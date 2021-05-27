@@ -1,53 +1,55 @@
 #pragma once
 /*
-1) база данных самолётов — каждый самолёт имеет название/пилота/характеристики (сами придумаете поля)
-и поля «максимальная дальность полёта», скорость полёта ;
+1) Р±Р°Р·Р° РґР°РЅРЅС‹С… СЃР°РјРѕР»С‘С‚РѕРІ вЂ” РєР°Р¶РґС‹Р№ СЃР°РјРѕР»С‘С‚ РёРјРµРµС‚ РЅР°Р·РІР°РЅРёРµ/РїРёР»РѕС‚Р°/С…Р°СЂР°РєС‚РµСЂРёСЃС‚РёРєРё (СЃР°РјРё РїСЂРёРґСѓРјР°РµС‚Рµ РїРѕР»СЏ)
+Рё РїРѕР»СЏ В«РјР°РєСЃРёРјР°Р»СЊРЅР°СЏ РґР°Р»СЊРЅРѕСЃС‚СЊ РїРѕР»С‘С‚Р°В», СЃРєРѕСЂРѕСЃС‚СЊ РїРѕР»С‘С‚Р° ;
 */
-#include "list.h"
+#include<fstream>
 #include<string>
-
+#include <vector>
+using namespace std;
 class Plane {
 private:
-	std::string name;
-	std::string pilotname;
-	std::string info;
+	string pilotname;
+	string info;
+	string name;
 	int maxrange;
 	int speed;
 public:
 	Plane() {
 
 	}
-	Plane(std::string name, std::string pilotname, std::string info, int maxrange, int speed) : name(name), pilotname(pilotname), info(info), maxrange(maxrange), speed(speed) {
+	Plane(string name, string pilotname, string info, int maxrange, int speed) : name(name), pilotname(pilotname), info(info), maxrange(maxrange), speed(speed) {
 
 	}
-	friend std::ostream& operator<< (std::ostream& out, const Plane& plane)
+	friend ostream& operator<< (ostream& out, const Plane& plane)
 	{
+		out<<plane.name<<endl<<plane.pilotname<<endl<<plane.info<<endl<<plane.maxrange<<endl<<plane.speed;
 		return out;
 	}
 
-	friend std::istream& operator>> (std::istream& is, Plane& plane)
+	friend istream& operator>> (istream& is, Plane& plane)
 	{
 		is >> plane.name >> plane.pilotname >> plane.info >> plane.maxrange>> plane.speed;
 		return is;
 	}
 	
-	void SetName(std::string s) {
+	void SetName(string s) {
 		this->name = s;
 	}
-	std::string GetName() {
+	string GetName() {
 		return this->name;
 	}
-	void SetPilotname(std::string s) {
+	void SetPilotname(string s) {
 		this->pilotname = s;
 	}
-	std::string GetPilotname() {
+	string GetPilotname() {
 		return this->pilotname;
 	}
 
-	void SetInfo(std::string s) {
+	void SetInfo(string s) {
 		this->info = s;
 	}
-	std::string GetInfo() {
+	string GetInfo() {
 		return this->info;
 	}
 	void SetMaxrange(int i) {
@@ -65,4 +67,25 @@ public:
 	~Plane() {
 
 	}
+};
+
+class plane_Menu {
+private:
+	size_t size;
+public:
+
+	vector<Plane> vec;
+	void findPlaneByName(string fname);
+
+	void edit(int index, string info, string newvalue);
+
+	void pushFront(string name, string pilotname, string info, int maxrange, int speed);
+
+	void print();
+
+	void readFile(string fileName);
+
+	void printFile(string fileName);
+
+	void del(int index);
 };
