@@ -107,30 +107,3 @@ public:
 		return vec.size();
 	}
 };
-
-class direction_Menu {
-private:
-public:
-
-	vector<Direction> vec;
-	//TODO ALL FUNCTIONS
-
-	Plane findPlaneByName(string fname);
-
-	void edit(int index, string info, string newvalue);
-
-	void pushFront(string name, int start, int end);
-
-	void print();
-
-	void readFile(string fileName);
-
-	void printFile(string fileName);
-
-	void del(int index);
-
-
-	size_t size() {
-		return vec.size();
-	}
-};
