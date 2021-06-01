@@ -88,14 +88,14 @@ void  plane_Menu::readFile(string fileName)
 				int speed = stoi(s);
 				vec.push_back(Plane(n,p,i, max_range, speed));
 			}
-			else 
+			else
 			{
 				break;
 			}
 		}
 		in.close();
 	}
-	else 
+	else
 	{
 		std::cout << "Can't open file " << fileName << '\n';
 	}
@@ -119,7 +119,7 @@ void  plane_Menu::printFile(string fileName)
 			out << vec[i].GetName() << '\n' << vec[i].GetPilotname() << '\n' << vec[i].GetInfo() << '\n' << vec[i].GetMaxrange() << '\n'<< vec[i].GetSpeed() << '\n';
 		}
 	}
-	else 
+	else
 	{
 		cout << "Can't open file " << fileName << '\n';
 	}
@@ -131,4 +131,3 @@ void  plane_Menu::del(int index)
 	if (index < vec.size())
 	vec.erase(vec.begin() + index);
 }
-

@@ -5,12 +5,12 @@ using namespace std;
 
 int main(int argc, char **argv)
 {
-	if (argc < 3) 
+	if (argc < 3)
 	{
 		std::cout << "No arguments\n";
 		return 1;
 	}
-	string fileName_plane = argv[1]; 
+	string fileName_plane = argv[1];
 	string fileName_direction = argv[2];
 	plane_Menu plane_menu;
 	direction_Menu direction_menu;
@@ -24,7 +24,7 @@ l1:
 		printf("=============================\n");
 		printf("1) Work with plane's database\n2) Work with direction's database\n3) Connect plane with direction\n4) Skip time\n5) exit \n");
 		cin >> choose;
-		switch (choose) 
+		switch (choose)
 		{
 			case 1:
 			{
@@ -96,7 +96,7 @@ l1:
 
 				case 1:
 				{
-					
+
 					string fname;
 					cout << "Enter name of the direction"<<endl;
 					cin >> fname;
@@ -117,12 +117,12 @@ l1:
 					cout << "end" << endl;
 					cin >> end;
 					direction_menu.pushFront(name, start, end);
-					
+
 					break;
 				}
 				case 4:
 				{
-					
+
 					int index;
 					string name;
 					cout << "Enter index:" << endl;
@@ -134,7 +134,7 @@ l1:
 				break;
 				case 5:
 				{
-					
+
 					int index;
 					cout << "Del index:" << endl;
 					cin >> index;
@@ -187,7 +187,7 @@ l1:
 						plane_menu.vec[direction_menu.vec[i].GetPlane()].SetState(0);
 						direction_menu.del(i);
 						i--;
-						
+
 					}
 				}
 				break;

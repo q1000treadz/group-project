@@ -36,7 +36,7 @@ void direction_Menu::editName(int index, string name)
 	vec[index].SetName(name);
 }
 
-void  direction_Menu::pushFront(string name, int start, int end) 
+void  direction_Menu::pushFront(string name, int start, int end)
 {
 	vec.push_back(Direction(name, start, end));
 }
@@ -99,4 +99,3 @@ void  direction_Menu::del(int index)
 	if(index<vec.size())
 	vec.erase(vec.begin() + index);
 }
-

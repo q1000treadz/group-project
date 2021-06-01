@@ -30,7 +30,7 @@ public:
 		is >> plane.name >> plane.pilotname >> plane.info >> plane.maxrange>> plane.speed;
 		return is;
 	}
-	
+
 	void SetName(string s) {
 		this->name = s;
 	}
