@@ -4,6 +4,10 @@
 #include <vector>
 #include<iostream>
 using namespace std;
+/*!
+	\brief Main class of project, consist realisation of object Plane.
+	Connect with class Direction. 
+*/
 class Plane {
 private:
 	string pilotname;
@@ -30,7 +34,7 @@ public:
 		is >> plane.name >> plane.pilotname >> plane.info >> plane.maxrange>> plane.speed;
 		return is;
 	}
-
+	
 	void SetName(string s) {
 		this->name = s;
 	}
@@ -81,7 +85,9 @@ public:
 
 	}
 };
-
+/*!
+	\brief Wrapper class which work with class Plane, ñonsist vector<Plane> and functions to work with them.
+*/
 class plane_Menu {
 private:
 	size_t size;

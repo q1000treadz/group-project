@@ -3,15 +3,19 @@
 #include<string>
 #include<vector>
 #include<iostream>
+/*!
+	\brief Main class of project, consist realisation of object Direction.
+	Connect with class Plane with function SetPlane and function SkipTime skip time in programm.
+*/
 class Direction {
 private:
 	std::string name;
 	int start;
 	int end;
 	int dist;
-	int time;
+	int time; 
 	int plane;
-
+	
 public:
 	Direction() {
 		plane = -1;
@@ -81,13 +85,15 @@ public:
 
 	}
 };
-
+/*!
+	\brief Wrapper class which work with class Direction, ñonsist vector<Direction> and functions to work with them.
+*/
 class direction_Menu {
 private:
 public:
 
 	vector<Direction> vec;
-
+	
 	void findDirectionByName(string fname);
 
 	void editName(int index, string name);
